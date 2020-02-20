@@ -18,3 +18,9 @@ Route::resource('questions','QuestionsController');
 Route::resource('answers','AnswerController',['except'=>['index','create','show']]);
 Route::resource('comments','CommentsController');
 
+Route::get('profile','PageController@profile');
+Route::get('accueil','PageController@accueil');
+Route::get('apropos','PageController@apropos');
+Route::get('contact','PageController@contact');
+Route::get('travaux','PageController@travaux');
+
