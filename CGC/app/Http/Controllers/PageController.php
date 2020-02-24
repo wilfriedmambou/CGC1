@@ -24,7 +24,10 @@ class PageController extends Controller
         return view('pages.travaux');
 
     }
-    public function contacts (){
-        return view('pages.contacts');
+    public function contact (){
+        return view('pages.contact');
+    }
+    public function produit (){
+        return view('pages.produits');
     }
 }

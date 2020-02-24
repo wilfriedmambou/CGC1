@@ -18,9 +18,10 @@ Route::resource('questions','QuestionsController');
 Route::resource('answers','AnswerController',['except'=>['index','create','show']]);
 Route::resource('comments','CommentsController');
 
-Route::get('profile','PageController@profile');
-Route::get('accueil','PageController@accueil');
-Route::get('apropos','PageController@apropos');
-Route::get('contact','PageController@contact');
-Route::get('travaux','PageController@travaux');
+Route::get('profile','PageController@profile')->name('profile');
+Route::get('accueil','PageController@accueil')->name('accueil');
+Route::get('apropos','PageController@apropos')->name('apropos');
+Route::get('contact','PageController@contact')->name('contact');
+Route::get('travaux','PageController@travaux')->name('travaux');
+Route::get('produit','PageController@produit')->name('produit');
 
