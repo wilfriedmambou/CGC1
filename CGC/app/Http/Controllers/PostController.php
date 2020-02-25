@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Posts;
 use Illuminate\Http\Request;
+use App\User;
 
 class PostController extends Controller
 {
@@ -24,7 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -35,7 +36,9 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Posts::create($request->all());
+    
+        return "Utilisateur créé !";
     }
 
     /**
