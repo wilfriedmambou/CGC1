@@ -15,4 +15,8 @@ class Posts extends Model
     {
         return $this->hasMany('App\Comments');
     }
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

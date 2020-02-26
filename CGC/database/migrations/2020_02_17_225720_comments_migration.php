@@ -19,6 +19,8 @@ class CommentsMigration extends Migration
             $table->string('description')->nullable();
             $table->unsignedBiginteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBiginteger('posts_id');
+            $table->foreign('posts_id')->references('id')->on('posts')->onDelete('cascade');
             $table->timestamps();
         });
     }

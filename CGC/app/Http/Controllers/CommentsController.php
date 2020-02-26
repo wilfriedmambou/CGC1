@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Comments;
 use Illuminate\Http\Request;
+use Auth;
+use App\Posts;
 
 class CommentsController extends Controller
 {
@@ -35,7 +37,16 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => "required|min:5",
+            'post_id' => 'required|integer'
+          ]);
+          $comment = new Comments();
+          $comment->title = $request->title;
+          $comment->user()->associate(Auth::id());
+          $post = Posts::findOrFail($request->post_id);
+          $post->comment()->save($comment);
+          return redirect()->route('posts.show', $post->id);
     }
 
     /**
