@@ -1,6 +1,9 @@
 @extends('template')
 
 @section('content')
+@if(Auth::user()->isAdmin())
+enter code here
+
 <div class="container">
     <h1>{{ $post->title }} </h1>
     <h5> Submitted By: {{ $post->user->name }},
@@ -40,4 +43,5 @@
 
 
 </div>
+@endif
 @endsection

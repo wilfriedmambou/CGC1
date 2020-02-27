@@ -44,5 +44,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Comments');
     }
-    
+    public function roles(){
+        return $this->belongsToMany('App\Role','user_role');
+    }
+    public function isAdmin(){
+        return $this->roles()->where('name','Administrator')->exists();
+    }
 }
