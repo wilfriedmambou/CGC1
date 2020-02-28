@@ -20,6 +20,7 @@ class PostForAdminMigration extends Migration
             $table->unsignedBiginteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('image')->nullable();
+            $table->string('publier')->nullable();
             $table->unsignedBiginteger('comments_id')->nullable();
             $table->foreign('comments_id')->references('id')->on('questions')->onDelete('cascade');
 

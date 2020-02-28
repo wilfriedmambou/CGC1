@@ -6,34 +6,21 @@
     <p class="lead">
         {{ $post->content }}
     </p>
-
-    <hr />
-    <!-- display all of the answers for this question -->
-    @if ($post->comment->count() > 0)
-    @foreach ($post->comments as $comment)
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <p>
-                {{ $comment->content }}
-            </p>
-        </div>
-    </div>
-    @endforeach
-    @else
-    <p>
-        There are no comments for this Post yet. Please consider submitting one below!
-    </p>
-    @endif
-
-
     <hr />
 
     <!-- display the form, to submit a new answer -->
-    <form action="{{ route('comment.store') }}" method="POST">
+    <form action="{{ route('posts.update',$post->id) }}" method="POST">
+        {{ method_field('PUT') }}
         {{ csrf_field() }}
-        <textarea class="form-control" name="content" rows="4"></textarea>
+        <textarea class="form-control" name="title" rows="4" placeholder='{{$post->title}}'></textarea>
+        {{-- <textarea class="form-control" name="content" type='hidden' rows="4" value='helpers'>content</textarea> --}}
+        <input type="hidden" value="helpers" name="content" />
         <input type="hidden" value="{{ $post->id }}" name="post_id" />
-        <button class="btn btn-primary">Submit Comment</button>
+        <div class="col-md-">
+            <label for="publier" class="col-md-  ">publier</label>
+            <input id="publier" type="checkbox" class=" " name="publier">
+        </div>
+        <button class="btn btn-primary">Modifier le post</button>
     </form>
 </div>
 </div>

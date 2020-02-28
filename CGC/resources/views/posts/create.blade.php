@@ -22,6 +22,11 @@
                             </div>
                         </div>
                         <div class="form-group">
+
+                            <div class="col-md-6">
+                                <label for="publier" class="col-md-3  ">publier</label>
+                                <input id="publier" type="checkbox" class=" " name="publier">
+                            </div>
                             <div class="col-md-8 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     Enregistrer

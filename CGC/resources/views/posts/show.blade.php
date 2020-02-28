@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('content')
-@if(Auth::user()->isAdmin())
+@if(!Auth::user()->isAdmin())
 enter code here
 
 <div class="container">

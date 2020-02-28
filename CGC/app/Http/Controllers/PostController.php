@@ -18,7 +18,7 @@ class PostController extends Controller
     public function index()
     {
         // $users = User::findOrfaild(Auth::id());
-        $posts = Posts::orderBy('id', 'desc')->paginate(3);
+        $posts = Posts::orderBy('id', 'desc')->where('publier','on')->paginate(6);
         return view('posts.index',compact('posts'));
     }
 
@@ -47,7 +47,9 @@ class PostController extends Controller
           $post = new Posts();
           $post->title = $request->title;
           $post->content = $request->content;
+          $post->publier = $request->publier;
           $post->user_id = Auth::id();
+
     
           // if successful we want to redirect
           if ($post->save()) {
@@ -78,11 +80,13 @@ class PostController extends Controller
      * @param  \App\Posts  $posts
      * @return \Illuminate\Http\Response
      */
-    public function edit(Posts $posts)
+    public function edit(Posts $post)
     {
-        $post = Posts::findOrFail($posts);
+        $this->authorize('update', $post);
+
+        // $post = Posts::findOrFail($id);
         // show the view and pass the record to the view
-        return view('post.show',compact('post'));
+        return view('posts.edit',compact('post'));
     }
 
     /**
@@ -92,9 +96,28 @@ class PostController extends Controller
      * @param  \App\Posts  $posts
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Posts $posts)
+        //  les policy sont sensible au nomage des variables un 's' sur
+        //  le $post conduit a une erreur qui empeche le bon fonctionnement
+
+    public function update(Request $request, Posts $post)
     {
-        //
+        $this->authorize('update', $post);
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            
+          ]);
+          $post->update([
+            $post->title = $request->title,
+            $post->content = $request->content,
+            $post->publier = $request->publier,
+            $post->user_id = Auth::id()
+          ]);
+        
+         if( $post->save()){
+            return "Utilisateur modifier avec success";
+         }
+         return 'Echec';
+
     }
 
     /**

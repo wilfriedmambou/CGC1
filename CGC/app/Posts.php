@@ -8,7 +8,8 @@ class Posts extends Model
 {
     protected $fillable = [
         'title',
-        'content'
+        'content',
+        'publier'
     ];
 
     public function comment()
@@ -19,4 +20,9 @@ class Posts extends Model
     {
         return $this->belongsTo('App\User');
     }
+    // public function publier()
+    // {
+       
+    //     return $this->where('publier','===','NULL');
+    // }
 }

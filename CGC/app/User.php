@@ -38,7 +38,7 @@ class User extends Authenticatable
     ];
     public function post()
     {
-        return $this->hasMany('App\Post');
+        return $this->hasMany('App\Posts');
     }
     public function comment()
     {
@@ -50,4 +50,7 @@ class User extends Authenticatable
     public function isAdmin(){
         return $this->roles()->where('name','Administrator')->exists();
     }
+    // public function publier(){
+    //     return $this->post()->where('publier','on')->exists();
+    // }
 }
