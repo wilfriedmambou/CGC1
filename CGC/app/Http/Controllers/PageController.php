@@ -37,4 +37,5 @@ class PageController extends Controller
     public function produit (){
         return view('pages.produits');
     }
+   
 }

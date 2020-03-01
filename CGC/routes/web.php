@@ -1,4 +1,6 @@
 <?php
+use App\Http\Middleware\CheckRole;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +33,7 @@ Route::get('produit','PageController@produit')->name('produit');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => [CheckRole::class]], function() {
+     Route::resource('admin/profile', 'AdminController');
+  });

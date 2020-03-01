@@ -55,7 +55,7 @@ class PostsPolicy
     public function update(User $user, Posts $posts)
     {
         //
-        return $user->id === $posts->$user_id
+        return $user->id === $posts->user_id
         ? Response::allow()
         : Response::deny('You do not own this post.');
     }
