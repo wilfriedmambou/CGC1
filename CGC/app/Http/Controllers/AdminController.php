@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Middleware\CheckRole;
+use App\User;
+use App\Posts;
 
 
 class AdminController extends Controller
@@ -21,7 +23,10 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view ('admin.profile');
+        $post = Posts::orderBy('id', 'desc')->where('publier','on')->paginate(6);
+        $user = User::all();
+
+        return view ('home',compact(['post','user']));
     }
 
     /**

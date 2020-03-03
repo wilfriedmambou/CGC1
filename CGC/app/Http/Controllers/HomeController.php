@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Posts;
+use App\User;
+use Auth;
+use App\Comments;
 
 use Illuminate\Http\Request;
 
@@ -23,6 +27,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $post = Posts::orderBy('id', 'desc')->where('publier','on');
+        $user = User::all();
+        // post en ligne
+        $postPersoPublier = Posts::orderBy('id','desc')->where('user_id',Auth::id())->where('publier','on');
+        // post de l'utilisateur qui est encore en brouillon il ne la pas encore publier en ligne 
+        $postPersoNonPublier = Posts::orderBy('id','desc')->where('user_id',Auth::id())->where('publier',NULL);
+
+        $Mycomments = Comments::all()->where('user_id',Auth::id());
+
+
+        return view ('home',compact(['post','user','postPersoNonPublier','postPersoPublier','Mycomments']));
+        // return view('home');
     }
 }

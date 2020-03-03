@@ -1,4 +1,4 @@
 @extends('template')
 @section('content')
-<p> PRofile Administrateur </p>
+<p> Profile Administrateur </p>
 @endsection

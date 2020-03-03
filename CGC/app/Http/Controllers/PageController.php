@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Posts;
 use App\User;
 use App\Comments;
+use Auth;
 
 
 class PageController extends Controller
@@ -20,8 +21,13 @@ class PageController extends Controller
         return view('pages.accueil',compact('posts'));
     }
     public function profile (){
-        return view('pages.profile');
+        $posts = Posts::orderBy('id', 'desc')->where('user_id',Auth::id())->paginate(30);
+       
 
+        
+        return view('pages.profile',compact('posts'));
+       
+        
     }
     public function apropos(){
         return view('pages.apropos');

@@ -16,6 +16,7 @@ use App\Http\Middleware\CheckRole;
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::resource('questions','QuestionsController');
 Route::resource('answers','AnswerController',['except'=>['index','create','show']]);
 Route::resource('comments','CommentsController', ['except' => ['index', 'create', 'show']]);
@@ -28,6 +29,7 @@ Route::get('apropos','PageController@apropos')->name('apropos');
 Route::get('contact','PageController@contact')->name('contact');
 Route::get('travaux','PageController@travaux')->name('travaux');
 Route::get('produit','PageController@produit')->name('produit');
+
 
 
 Auth::routes();

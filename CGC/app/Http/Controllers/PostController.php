@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 
-
 class PostController extends Controller
 {
     /**
@@ -130,4 +129,6 @@ class PostController extends Controller
     {
         //
     }
+  
+
 }

@@ -20,9 +20,4 @@ class Posts extends Model
     {
         return $this->belongsTo('App\User');
     }
-    // public function publier()
-    // {
-       
-    //     return $this->where('publier','===','NULL');
-    // }
 }
