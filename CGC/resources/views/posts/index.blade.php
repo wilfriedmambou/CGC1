@@ -1,4 +1,4 @@
-@extends('template')
+@extends('layouts.admin.admin')
 @section('content')
 
 <h2>Posts Recet</h2>

@@ -43,5 +43,9 @@ class PageController extends Controller
     public function produit (){
         return view('pages.produits');
     }
+    public function allDatas (){
+    	$users = User::all();
+        return view('layouts.admin.dashTable',compact('users'));
+    }
    
 }

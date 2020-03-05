@@ -2,7 +2,7 @@
 <a href="index3.html" class="brand-link">
     <img src="{{ asset('dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
         style="opacity: .8">
-<span class="brand-text font-weight-light">{{ config('app.name', 'Laravel') }}</span>
+    <span class="brand-text font-weight-light">{{ config('app.name', 'Laravel') }}</span>
 </a>
 
 <!-- Sidebar -->
@@ -31,11 +31,40 @@
                     </p>
                 </a>
             </li>
-         
-           
-        
-            
-            <li class="nav-item has-treeview">
+
+            <li class="nav-item">
+                <a href="{{ route('post.index') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Posts</p>
+                </a>
+            </li>
+            @if(Auth::user()->isAdministrator())
+            <li class="nav-item">
+                <a href="{{ route('user.index') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Users</p>
+                </a>
+
+            </li>
+            @endif
+            <li class="nav-item">
+                <a href="pages/forms/validation.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Questions</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="pages/forms/validation.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Reponses</p>
+                </a>
+            </li>
+
+
+
+
+
+            {{-- <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-edit"></i>
                     <p>
@@ -69,8 +98,8 @@
                         </a>
                     </li>
                 </ul>
-            </li>
-          
+            </li> --}}
+
             <li class="nav-header">LABELS</li>
             <li class="nav-item">
 

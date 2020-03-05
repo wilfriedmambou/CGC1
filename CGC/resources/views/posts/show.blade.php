@@ -1,7 +1,7 @@
-@extends('template')
-
+{{-- @extends('template') --}}
+@extends('layouts.admin.admin')
 @section('content')
-@if(!Auth::user()->isAdmin())
+{{-- @if(!Auth::user()->isAdmin()) --}}
 enter code here
 
 <div class="container">
@@ -43,5 +43,5 @@ enter code here
 
 
 </div>
-@endif
+{{-- @endif --}}
 @endsection

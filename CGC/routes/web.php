@@ -1,5 +1,6 @@
 <?php
 use App\Http\Middleware\CheckRole;
+use App\User;
 
 
 /*
@@ -21,6 +22,8 @@ Route::resource('questions','QuestionsController');
 Route::resource('answers','AnswerController',['except'=>['index','create','show']]);
 Route::resource('comments','CommentsController', ['except' => ['index', 'create', 'show']]);
 Route::resource('posts','PostController');
+Route::resource ('admin/post','PostAdminController');
+
 
 
 Route::get('profile/{user}','PageController@profile')->name('profile');
@@ -29,6 +32,7 @@ Route::get('apropos','PageController@apropos')->name('apropos');
 Route::get('contact','PageController@contact')->name('contact');
 Route::get('travaux','PageController@travaux')->name('travaux');
 Route::get('produit','PageController@produit')->name('produit');
+Route::get('all','PageController@allDatas')->middleware(CheckRole::class);
 
 
 
@@ -38,4 +42,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => [CheckRole::class]], function() {
      Route::resource('admin/profile', 'AdminController');
+   
+     
   });
+  Route::resource('user', 'UserController');
+  
