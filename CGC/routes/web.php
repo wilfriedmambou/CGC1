@@ -26,13 +26,13 @@ Route::resource ('admin/post','PostAdminController');
 
 
 
-Route::get('profile/{user}','PageController@profile')->name('profile');
+// Route::get('profile/{user}','PageController@profile')->name('profile');
 Route::get('accueil','PageController@accueil')->name('accueil');
 Route::get('apropos','PageController@apropos')->name('apropos');
 Route::get('contact','PageController@contact')->name('contact');
 Route::get('travaux','PageController@travaux')->name('travaux');
 Route::get('produit','PageController@produit')->name('produit');
-Route::get('all','PageController@allDatas')->middleware(CheckRole::class);
+Route::get('all','PageController@allDatas')->middleware(CheckRole::class)->name('all');
 
 
 
@@ -46,4 +46,7 @@ Route::group(['middleware' => [CheckRole::class]], function() {
      
   });
   Route::resource('user', 'UserController');
+  Route::resource('profile', 'profileController');
+  Route::get('profile2/{id}-{user}-{role}', 'PageController@profile2')->name('profile2')->where('id','[0-9]')->where('user','[a-z0-9A-Z\-\ ]+')->where('role','[a-z0-9\- ]+');
+
   

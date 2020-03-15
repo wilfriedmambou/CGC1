@@ -23,7 +23,7 @@
             <!-- Add icons to the links using the .nav-icon class
    with font-awesome or any other icon font library -->
             <li class="nav-item has-treeview menu-open">
-                <a href="#" class="nav-link active">
+                <a href="{{ route('home') }}" class="nav-link active">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
                         Dashboard
@@ -41,12 +41,18 @@
             @if(Auth::user()->isAdministrator())
             <li class="nav-item">
                 <a href="{{ route('user.index') }}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="fas fa-users nav-icon"></i>
                     <p>Users</p>
                 </a>
 
             </li>
             @endif
+            <li class="nav-item">
+                <a href="pages/forms/validation.html" class="nav-link">
+                    <i class="fas fa-envelope nav-icon"></i>
+                    <p>Messages</p>
+                </a>
+            </li>
             <li class="nav-item">
                 <a href="pages/forms/validation.html" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
@@ -59,46 +65,6 @@
                     <p>Reponses</p>
                 </a>
             </li>
-
-
-
-
-
-            {{-- <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-edit"></i>
-                    <p>
-                        Forms
-                        <i class="fas fa-angle-left right"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="pages/forms/general.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>General Elements</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/forms/advanced.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Advanced Elements</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/forms/editors.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Editors</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/forms/validation.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Validation</p>
-                        </a>
-                    </li>
-                </ul>
-            </li> --}}
 
             <li class="nav-header">LABELS</li>
             <li class="nav-item">

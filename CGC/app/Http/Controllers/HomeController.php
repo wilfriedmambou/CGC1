@@ -29,6 +29,8 @@ class HomeController extends Controller
     {
         $post = Posts::orderBy('id', 'desc')->where('publier','on');
         $user = User::all();
+        // post pub et non pub 
+        $postsall = Posts::all();
         // post en ligne
         $postPersoPublier = Posts::orderBy('id','desc')->where('user_id',Auth::id())->where('publier','on');
         // post de l'utilisateur qui est encore en brouillon il ne la pas encore publier en ligne 
@@ -37,7 +39,7 @@ class HomeController extends Controller
         $Mycomments = Comments::all()->where('user_id',Auth::id());
 
 
-        return view ('home',compact(['post','user','postPersoNonPublier','postPersoPublier','Mycomments']));
+        return view ('home',compact(['post','user','postPersoNonPublier','postPersoPublier','Mycomments','postsall']));
         // return view('home');
     }
 }

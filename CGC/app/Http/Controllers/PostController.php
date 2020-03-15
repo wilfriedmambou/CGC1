@@ -24,6 +24,7 @@ class PostController extends Controller
     {
         // $users = User::findOrfaild(Auth::id());
         $posts = Posts::orderBy('id', 'desc')->where('publier','on')->paginate(6);
+       
         return view('posts.index',compact('posts'));
     }
 

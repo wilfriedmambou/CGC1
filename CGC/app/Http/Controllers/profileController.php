@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use App\Posts;
-use Auth;
 
-class PostAdminController extends Controller
+class profileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +13,7 @@ class PostAdminController extends Controller
      */
     public function index()
     {
-        $postsAdmin = Posts::orderBy('id')->paginate(8);
-        // recuperation des utilisateurs qui sont pas Administrateur 
-        $postuser = Posts::orderBy('id')->where('user_id',Auth::id())->paginate(5);
-        return view ('layouts.admin.post.index',compact(['postsAdmin','postuser']));
+        //
     }
 
     /**
@@ -49,9 +43,9 @@ class PostAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,$user,$role)
     {
-        //
+        return view('user.profile.show',compact('id','user','role'));
     }
 
     /**
@@ -60,10 +54,9 @@ class PostAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Posts $post)
+    public function edit($id)
     {
-        $this->authorize('update', $post);
-        return view('layouts.admin.post.edit',compact('post'));
+        //
     }
 
     /**
@@ -73,27 +66,9 @@ class PostAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Posts $post)
+    public function update(Request $request, $id)
     {
-
-          $this->authorize('update', $post);
-        $this->validate($request, [
-            'title' => 'required|max:255',
-            'content' => 'required|max:255'
-            
-          ]);
-          $post->update([
-            $post->title = $request->title,
-            $post->content = $request->content,
-            $post->publier = $request->publier,
-            $post->user_id = Auth::id()
-          ]);
-
-          if( $post->save()){
-            return "Utilisateur modifier avec success";
-         }
-         return 'Echec';
-
+        //
     }
 
     /**

@@ -21,13 +21,16 @@
                         </thead>
                         <tbody>
                             @foreach ($users as $user)
-                            @foreach($user->roles as $role)
+                            @foreach ($user->roles as $role)
+
+
                             <tr>
                                 <td>{{$user->name}}</td>
-                                <td> {{$role->name}} </td>
-                                <td>profile</td>
-                                <td></td>
-                                <td>
+                                <td>{{$role->name}}</td>
+                                <td><a href="{{route('profile2',['id'=>$user->id,'user'=>$user->name,'role'=>$role->name])}}">
+                                        profile</a> </td>
+                                <td>{{$user->post()->count()}}</td>
+                                <td style="paddingLeft:10 px;">
                                     <a href="{{ route('user.edit',$user->id) }}"><i class="fas fa-edit"></i>
 
                                     </a>
@@ -38,9 +41,7 @@
                                 </td>
                             </tr>
                             @endforeach
-
                             @endforeach
-
                         </tbody>
                         <tfoot>
                             <tr>
