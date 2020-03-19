@@ -1,6 +1,6 @@
 <!-- Brand Logo -->
 <a href="index3.html" class="brand-link">
-    <img src="{{ asset('dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+    <img src="{{ asset('storage/user.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
         style="opacity: .8">
     <span class="brand-text font-weight-light">{{ config('app.name', 'Laravel') }}</span>
 </a>
@@ -9,9 +9,13 @@
 <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        @if (Auth::user())
         <div class="image">
-            <img src="{{ asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+            <img style="width:5rem; height:5rem;" src="{{asset('storage/'.Auth::user()->profile_pic)}}"
+                class="img-circle elevation-2" alt="User Image">
         </div>
+        @endif
+
         <div class="info">
             <a href="#" class="d-block">@if(Auth::user()){{{Auth::user()->name}}}@endif</a>
         </div>
@@ -38,6 +42,7 @@
                     <p>Posts</p>
                 </a>
             </li>
+            @if (Auth::user())
             @if(Auth::user()->isAdministrator())
             <li class="nav-item">
                 <a href="{{ route('user.index') }}" class="nav-link">
@@ -46,6 +51,7 @@
                 </a>
 
             </li>
+            @endif
             @endif
             <li class="nav-item">
                 <a href="pages/forms/validation.html" class="nav-link">

@@ -27,12 +27,17 @@
                 <div class="widget-user-header bg-info">
                     <h3 class="widget-user-username">
                         {{$user}}
-                   </h3>
+                    </h3>
                     <h5 class="widget-user-desc">{{$role}}</h5>
                 </div>
                 {{-- @endif --}}
                 <div class="widget-user-image">
-                    <img class="img-circle elevation-2" src="../dist/img/user1-128x128.jpg" alt="User Avatar">
+                    @if (Auth::user())
+                    <img class="img-circle elevation-2" style="width:5rem; height:5rem;"
+                        src="{{asset('storage/'.$picture)}}" alt="User Avatar">
+
+
+                    @endif
                 </div>
                 <div class="card-footer">
                     <div class="row">

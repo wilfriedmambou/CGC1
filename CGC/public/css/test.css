@@ -1,0 +1,15 @@
+.block1 {
+    border-style: solid;
+    border-width: 1px;
+    margin: 1rem;
+    /* padding:1rem; */
+}
+input,
+.form-group {
+    padding: 1rem;
+
+    margin-right: 1rem;
+    margin-left: 1rem;
+   margin-bottom: 0;
+   margin-top: 0;
+}

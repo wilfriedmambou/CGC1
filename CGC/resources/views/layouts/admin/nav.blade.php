@@ -24,6 +24,7 @@
 </form>
 
 <!-- Right navbar links -->
+@if (Auth::user())
 <ul class="navbar-nav ml-auto">
     <!-- Messages Dropdown Menu -->
     <li class="nav-item dropdown">
@@ -116,3 +117,4 @@
         </a>
     </li>
 </ul>
+@endif

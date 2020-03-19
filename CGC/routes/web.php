@@ -47,6 +47,8 @@ Route::group(['middleware' => [CheckRole::class]], function() {
   });
   Route::resource('user', 'UserController');
   Route::resource('profile', 'profileController');
-  Route::get('profile2/{id}-{user}-{role}', 'PageController@profile2')->name('profile2')->where('id','[0-9]')->where('user','[a-z0-9A-Z\-\ ]+')->where('role','[a-z0-9\- ]+');
+  Route::get('profile2/{id}-{user}-{role}-{picture}', 'PageController@profile2')->name('profile2')->where('id','[0-9]')->where('user','[a-z0-9A-Z\-\ ]+')->where('role','[a-z0-9\- ]+')->where('picture','[a-z0-9\-_. ]+');
 
-  
+Route :: get ( 'image-upload' , 'ImageUploadController@imageUpload' )->name( 'image.upload' ); 
+Route :: post ( 'image-upload' , 'ImageUploadController@imageUploadPost' )->name ( 'image.upload.post' ); 
+Route :: get ( 'test' , 'PostController@test' )->name ( 'test' ); 

@@ -48,9 +48,9 @@ class PageController extends Controller
         return view('layouts.admin.dashTable',compact('users'));
     }
     
-    public function profile2 ($id,$user,$role){
+    public function profile2 ($id,$user,$role,$picture){
         
-        return view('user.profile.show',compact('id','user','role'));
+        return view('user.profile.show',compact('id','picture','role','user'));
     }
    
 }

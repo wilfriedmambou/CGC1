@@ -10,7 +10,7 @@ use Auth;
 class PostController extends Controller
 {
     public function __construct (){
-        $this->middleware('auth', ['except' => ['index','show']]);
+        $this->middleware('auth', ['except' => ['index','show','test']]);
         // $this->middleware(CheckRole::class);
 
 
@@ -24,7 +24,6 @@ class PostController extends Controller
     {
         // $users = User::findOrfaild(Auth::id());
         $posts = Posts::orderBy('id', 'desc')->where('publier','on')->paginate(6);
-       
         return view('posts.index',compact('posts'));
     }
 
@@ -135,6 +134,10 @@ class PostController extends Controller
     public function destroy(Posts $posts)
     {
         //
+    }
+    public function test()
+    {
+        return view('posts.test');
     }
   
 

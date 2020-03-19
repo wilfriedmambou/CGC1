@@ -27,7 +27,8 @@
                             <tr>
                                 <td>{{$user->name}}</td>
                                 <td>{{$role->name}}</td>
-                                <td><a href="{{route('profile2',['id'=>$user->id,'user'=>$user->name,'role'=>$role->name])}}">
+                                <td><a
+                                        href="{{route('profile2',['id'=>$user->id,'picture'=>$user->profile_pic,'role'=>$role->name,'user'=>$user->name])}}">
                                         profile</a> </td>
                                 <td>{{$user->post()->count()}}</td>
                                 <td style="paddingLeft:10 px;">
